@@ -9,9 +9,15 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        tools:replace="android:supportsRtl"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        android:theme="@style/AppTheme"
+        tools:replace="android:supportsRtl">
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".auth.AuthMagUi"/>
+        <activity android:name=".auth.SignedInActivity"/>
+        <activity
+            android:name=".MagAct"
+            android:label="@string/title_activity_mag"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
