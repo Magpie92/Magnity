@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.magpiehoon.magnity.auth.AuthMagFrag;
+import com.magpiehoon.magnity.auth.AuthMagUi;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -57,6 +58,21 @@ public class MagAct extends AppCompatActivity
         mDrawerbleRoot.addDrawerListener(toggle);
         toggle.syncState();
 
+        View headerView = mNavMainView.getHeaderView(0);
+        headerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth auth = FirebaseAuth.getInstance();
+                if (auth.getCurrentUser() == null) {
+                    startActivity(AuthMagUi.createIntent(getApplicationContext()));
+                } else {
+                    View headerView = mNavMainView.getHeaderView(0);
+                    TextView textView = (TextView) headerView.findViewById(R.id.nav_profile_email);
+                    textView.setText(auth.getCurrentUser().getEmail());
+                }
+
+            }
+        });
         mNavMainView.setNavigationItemSelectedListener(this);
     }
 
@@ -84,7 +100,7 @@ public class MagAct extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        //n~oinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
