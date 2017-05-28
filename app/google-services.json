@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "96170419658",
+    "firebase_url": "https://magnity-25921.firebaseio.com",
+    "project_id": "magnity-25921",
+    "storage_bucket": "magnity-25921.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:96170419658:android:de1c6ffde7c0c770",
+        "android_client_info": {
+          "package_name": "com.magpiehoon.magnity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "96170419658-bo13iud2ahg1nus7qff38ktrv757jvld.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.magpiehoon.magnity",
+            "certificate_hash": "d6d0fac7361d652cd8f3049958d542e54db90e70"
+          }
+        },
+        {
+          "client_id": "96170419658-tqq95l53q9nhp377pb3uqg2nthv4qnj7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_nJ0zKiBRxVKnSc7_Paw4sgF1gT4Z1fA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "96170419658-tqq95l53q9nhp377pb3uqg2nthv4qnj7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
