@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -53,7 +54,7 @@ public class ChatAct extends AppCompatActivity implements FirebaseAuth.AuthState
     TextView mEmptyListMessage;
 
     private LinearLayoutManager mManager;
-    private FirebaseRecyclerAdapter<Chat, ChatHolder> mAdpater;
+    private FirebaseRecyclerAdapter<Chat, ChatHolder> mAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -107,8 +108,8 @@ public class ChatAct extends AppCompatActivity implements FirebaseAuth.AuthState
     @Override
     protected void onStop() {
         super.onStop();
-        if (mAdpater != null) {
-            mAdpater.cleanup();
+        if (mAdapter != null) {
+            mAdapter.cleanup();
         }
     }
 
@@ -127,7 +128,7 @@ public class ChatAct extends AppCompatActivity implements FirebaseAuth.AuthState
 
     private void attachRecyclerViewAdapter() {
         Query lastFifty = mChatRef.limitToLast(50);
-        mAdpater = new FirebaseRecyclerAdapter<Chat, ChatHolder>(Chat.class, R.layout.message, ChatHolder.class, lastFifty) {
+        mAdapter = new FirebaseRecyclerAdapter<Chat, ChatHolder>(Chat.class, R.layout.message, ChatHolder.class, lastFifty) {
             @Override
             protected void populateViewHolder(ChatHolder viewHolder, Chat model, int position) {
                 viewHolder.setName(model.getName());
@@ -140,7 +141,21 @@ public class ChatAct extends AppCompatActivity implements FirebaseAuth.AuthState
                     viewHolder.setIsSender(false);
                 }
             }
+
+            @Override
+            protected  void onDataChanged(){
+                mEmptyListMessage.setVisibility(mAdapter.getItemCount() == 0 ? View.VISIBLE : View.GONE);
+            }
         };
+
+        mAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onItemRangeInserted(int positionStart, int itemCount) {
+                mManager.smoothScrollToPosition(mMessages,null,mAdapter.getItemCount());
+            }
+        });
+
+        mMessages.setAdapter(mAdapter);
     }
 
     private void signInAnonymously() {
