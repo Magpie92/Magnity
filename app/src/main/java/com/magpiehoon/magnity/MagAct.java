@@ -1,5 +1,6 @@
 package com.magpiehoon.magnity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,9 +21,11 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.magpiehoon.magnity.auth.AuthMagFrag;
 import com.magpiehoon.magnity.auth.AuthMagUi;
+import com.magpiehoon.magnity.db.ChatAct;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MagAct extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -37,6 +41,9 @@ public class MagAct extends AppCompatActivity
 
     @BindView(R.id.frm_content_mag)
     FrameLayout mFrmContentMag;
+
+    @BindView(R.id.btn_mag_chat)
+    Button btnMagChat;
 
 
     @Override
@@ -144,5 +151,12 @@ public class MagAct extends AppCompatActivity
             TextView textView = (TextView) headerView.findViewById(R.id.nav_profile_email);
             textView.setText(auth.getCurrentUser().getEmail());
         }
+    }
+
+    @OnClick(R.id.btn_mag_chat)
+    public void startChat(){
+        Intent intent = new Intent();
+        intent.setClass(getApplicationContext(), ChatAct.class);
+        startActivity(intent);
     }
 }

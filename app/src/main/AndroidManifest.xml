@@ -13,6 +13,7 @@
         tools:replace="android:supportsRtl">
         <activity android:name=".auth.AuthMagUi"/>
         <activity android:name=".auth.SignedInActivity"/>
+        <activity android:name=".db.ChatAct"/>
         <activity
             android:name=".MagAct"
             android:label="@string/title_activity_mag"

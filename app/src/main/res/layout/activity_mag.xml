@@ -31,7 +31,16 @@
         <FrameLayout
             android:id="@+id/frm_content_mag"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            >
+
+            <Button
+                android:id="@+id/btn_mag_chat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Chat"/>
+        </FrameLayout>
 
     </LinearLayout>
 

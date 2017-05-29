@@ -64,4 +64,8 @@
 
     <string name="action_settings">Settings</string>
 
+    <!--DB-->
+    <string name="start_chatting">No messages. Start chatting at the bottom!</string>
+    <string name="signed_in">Signed In</string>
+
 </resources>
